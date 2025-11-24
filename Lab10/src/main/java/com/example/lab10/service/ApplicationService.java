@@ -24,8 +24,8 @@ public class ApplicationService {
     }
 
 
-    public boolean updateApplication(JopApplication jopApplication , Integer Id){
-        JopApplication oldJopApplication = applicationRepository.getById(Id);
+    public boolean updateApplication(JopApplication jopApplication , Integer id){
+        JopApplication oldJopApplication = applicationRepository.getById(id);
         if (oldJopApplication == null ){
             return false;
         }
@@ -35,14 +35,15 @@ public class ApplicationService {
     }
 
 
-    public boolean deleteApplication(Integer Id) {
-        JopApplication jopApplication = applicationRepository.getById(Id);
+    public boolean deleteApplication(Integer id) {
+        JopApplication jopApplication = applicationRepository.getById(id);
         if (jopApplication == null) {
             return false;
         }
         applicationRepository.delete(jopApplication);
         return true;
     }
+
 
 }
 

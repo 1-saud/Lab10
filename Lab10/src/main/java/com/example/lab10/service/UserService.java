@@ -22,8 +22,8 @@ public class UserService {
     }
 
 
-    public boolean updateUser(Integer Id, User user) {
-        User oldUser = userRepository.getById(Id);
+    public boolean updateUser(Integer id, User user) {
+        User oldUser = userRepository.getById(id);
         if (oldUser == null) {
             return false;
         }
@@ -38,8 +38,8 @@ public class UserService {
         return true;
     }
 
-    public boolean deleteUser(Integer Id) {
-        User user = userRepository.getById(Id);
+    public boolean deleteUser(Integer id) {
+        User user = userRepository.getById(id);
         if (user == null) {
             return false;
         }

@@ -13,15 +13,15 @@ public class JopApplication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "int not null")
+    @Column//(columnDefinition = "int not null")
     private Integer id;
 
     @NotNull(message = "userId shouldn't be null")
-    @Column(columnDefinition = "int not null")
+    @Column//(columnDefinition = "int not null")
     private Integer userId;
 
     @NotNull(message = "jobPostId shouldn't be null")
-    @Column(columnDefinition = "int not null")
+    @Column//(columnDefinition = "int not null")
     private Integer jobPostId;
 
 }

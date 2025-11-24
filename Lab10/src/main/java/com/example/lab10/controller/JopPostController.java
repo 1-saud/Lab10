@@ -29,22 +29,22 @@ public class JopPostController {
 
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<?> updatePost(@PathVariable Integer Id, @RequestBody @Valid JopPost jopPost, Errors errors) {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updatePost(@PathVariable Integer id, @RequestBody @Valid JopPost jopPost, Errors errors) {
         if (errors.hasErrors()) {
             String message = errors.getFieldError().getDefaultMessage();
             return ResponseEntity.status(400).body(message);
         }
-        boolean IsUpdated = postService.updatePost(Id, jopPost);
+        boolean IsUpdated = postService.updatePost(id, jopPost);
         if (!IsUpdated) {
             return ResponseEntity.status(400).body("Post not found");
         }
         return ResponseEntity.status(200).body("updated");
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deletePost(@PathVariable Integer Id) {
-        boolean isDeleted = postService.deletePost(Id);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deletePost(@PathVariable Integer id) {
+        boolean isDeleted = postService.deletePost(id);
         if (!isDeleted) {
             return ResponseEntity.status(400).body("User not found");
         }

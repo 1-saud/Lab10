@@ -23,8 +23,8 @@ public class PostService {
 
     }
 
-    public boolean updatePost(Integer Id , JopPost jopPost) {
-        JopPost oldJopPost = postRepository.getById(Id);
+    public boolean updatePost(Integer id , JopPost jopPost) {
+        JopPost oldJopPost = postRepository.getById(id);
         if (oldJopPost == null) {
             return false;
         }
@@ -36,13 +36,22 @@ public class PostService {
     }
 
 
-    public Boolean deletePost(Integer Id){
-        JopPost jopPost = postRepository.getById(Id);
+    public Boolean deletePost(Integer id){
+        JopPost jopPost = postRepository.getById(id);
         if (jopPost == null){
             return false;
         }
         postRepository.delete(jopPost);
         return true;
     }
+
+
+//    public Boolean deletePost(Integer id) {
+//        if (!postRepository.existsById(id)) {
+//            return false;
+//        }
+//        postRepository.deleteById(id);
+//        return true;
+//    }
 
 }

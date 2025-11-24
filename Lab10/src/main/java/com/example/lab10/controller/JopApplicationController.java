@@ -28,32 +28,28 @@ public class JopApplicationController {
     return ResponseEntity.status(200).body("added");
     }
 
-    @PutMapping("/updated")
-    public ResponseEntity<?> updateApplication (@PathVariable Integer Id , @Valid @RequestBody
+    @PutMapping("/updated/{id}")
+    public ResponseEntity<?> updateApplication (@PathVariable Integer id , @Valid @RequestBody
     JopApplication jopApplication , Errors errors){
         if (errors.hasErrors()){
             String message = errors.getFieldError().getDefaultMessage();
             return ResponseEntity.status(400).body(message);
         }
-        boolean IsUpdated = applicationService.updateApplication(jopApplication , Id);
+        boolean IsUpdated = applicationService.updateApplication(jopApplication , id);
         if (!IsUpdated){
             ResponseEntity.status(400).body("error - cant find it");
         }
         return ResponseEntity.status(200).body("deleted");
     }
 
-    @DeleteMapping("/delete")
-    public ResponseEntity<?> deleteApplication (@PathVariable Integer Id){
-        boolean IsDeleted = applicationService.deleteApplication(Id);
-        if (!IsDeleted){
-            ResponseEntity.status(400).body("error - not deleted");
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<?> deleteApplication(@PathVariable Integer id) {
+        boolean isDeleted = applicationService.deleteApplication(id);
+        if (!isDeleted) {
+            return ResponseEntity.status(400).body("Application not found");
         }
         return ResponseEntity.status(200).body("deleted");
-
     }
-
-
-
 
 
 }
